@@ -1,5 +1,5 @@
 
-module.exports = function(app){
-require('./auth/auth')(app)
+module.exports = function(app,config){
+require('./auth/auth')(app,config)
 
 }

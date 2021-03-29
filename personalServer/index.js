@@ -1,5 +1,4 @@
 const dotenv  = require('dotenv')
-const junction = require('./mongo/junction').junction
 class Enviroment {
     dotenvPath;
     constructor(){
@@ -27,7 +26,7 @@ class Enviroment {
 
 
 
-function init(){
+async function init(){
 var express = require('express')
 const app = express()
 const cor = require('cors')
@@ -36,11 +35,10 @@ app.use(cor())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 // Parse JSON bodies (as sent by API clients)
-require('./routes')(app)
 var mongoConfig = new Enviroment().getMongoConfig()
-var mongoStart = new junction(mongoConfig)
-mongoStart.init()
-
+require('./routes')(app,mongoConfig)
+const junction = require('./mongo/junction').junction
+new junction(mongoConfig).init()
 app.listen(process.env.PORT || 3000,()=>{
     console.log('server started')
 })
