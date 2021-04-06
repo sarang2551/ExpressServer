@@ -1,0 +1,21 @@
+{
+    "main":{
+    "name":"Sarang Nirwan",
+    "image": "",
+    "bio":"I am a coding enthusiast who loves learning new languages and concepts. Currently, I am comfortable in using Nodejs, Python, TypeScript and Reactjs. Apart from coding I like to play squash",
+    "address":{
+        "street":"Moon street",
+        "city":"Moon",
+        "state":"Underground City",
+        "zip":"01234"
+    },
+    "phone":"12345",
+    "email":"testing123@gmail.com",
+    "resumedownload":"",
+    "project":"React App",
+    "githb":"https://github.com/sarang2551/FullStackExp.git",
+    "description":"My personal react experiment with a local express server"
+    }
+    
+
+}
