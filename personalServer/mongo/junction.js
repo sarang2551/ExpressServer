@@ -78,7 +78,7 @@ class junction {
     getAllProducts = async(req,res)=>{
         try{
         const products = await this.productsCollection.find().toArray()
-        console.log(`Sending ${products.length} products`)
+        console.log(`Sending ${products.length} products from products db`)
         res.send(products) //Array of Objects
         }catch(e){throw e}
     }
