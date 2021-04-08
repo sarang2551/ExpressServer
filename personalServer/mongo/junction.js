@@ -8,7 +8,7 @@ class junction {
     mongoConfig = {}
     client;
     collection;
-    
+    productsCollection;
     constructor(config){
         this.mongoConfig = config
         
@@ -19,6 +19,7 @@ class junction {
                     const mongo =  new MongoClient(this.mongoConfig.mongoUrl,{useNewUrlParser:true,useUnifiedTopology:true})
                     this.client = (await mongo.connect()).db('training')
                     this.collection = this.client.collection('train')
+                    this.productsCollection = this.client.collection('products')
             }catch(e){
                 console.error("Mongo client unable to connect")
                 throw e
@@ -73,6 +74,13 @@ class junction {
             throw e
         }
         
+    }
+    getAllProducts = async(req,res)=>{
+        try{
+        const products = await this.productsCollection.find().toArray()
+        console.log(`Sending ${products.length} products`)
+        res.send(products) //Array of Objects
+        }catch(e){throw e}
     }
 }
 exports.databaseInit = async function(config){
